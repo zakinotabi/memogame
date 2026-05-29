@@ -1,4 +1,10 @@
+import Card from './components/Card';
+
 function App() {
-  return <h1>Memo game</h1>;
+  return (
+    <main>
+      <h1>Memo game</h1> <Card />
+    </main>
+  );
 }
 export default App;
