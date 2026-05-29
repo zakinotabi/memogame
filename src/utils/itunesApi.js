@@ -1,6 +1,8 @@
-async function album(name) {
+async function album(id) {
   try {
-    const response = await fetch(`https://itunes.apple.com/search?term=${name}&media=music&entity=album&limit=1`);
+    //old api cause it suck at accuracy
+    //const response = await fetch(`https://itunes.apple.com/search?term=${name}&media=music&entity=album&limit=1`);
+    const response = await fetch(`https://itunes.apple.com/lookup?id=${id}&entity=album`);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

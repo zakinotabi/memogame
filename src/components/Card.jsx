@@ -6,26 +6,37 @@
 
 import { useEffect, useState } from 'react';
 import album from '../utils/itunesApi';
+import albumIds from '../utils/albumIds';
 
 function Card() {
-  const [cover, setCover] = useState();
+  const [covers, setCovers] = useState();
+
+  console.log(covers);
 
   useEffect(() => {
-    async function api() {
-      const name = 'drake+iceman';
-      const music = await album(name);
-      setCover(music.results[0]);
-    }
-    api();
+    (async () => {
+      const Ids = albumIds();
+      const albumPromises = Ids.map((id) => album(id));
+      const musicData = await Promise.all(albumPromises);
+      const results = musicData.map((each) => each.results[0]);
+
+      setCovers(results);
+    })();
   }, []);
 
-  if (!cover) {
-    return <p>Loading...</p>; // Prevents the crash!
-  }
   return (
     <div>
-      <img src={cover.artworkUrl100} alt="" />
-      <p>{cover.collectionName}</p>
+      <h2>Music Results</h2>
+
+      {covers &&
+        // only rendered when cover is defined
+        covers.map((num) => (
+          <div className="card">
+            <h3>{num?.artistName}</h3>
+            <img src={num?.artworkUrl100} />
+            <p>{num?.collectionName}</p>
+          </div>
+        ))}
     </div>
   );
 }
