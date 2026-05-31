@@ -1,0 +1,76 @@
+main {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 20% 1fr;
+
+  gap: 18px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.cards-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(auto, 1fr);
+  gap: 18px;
+}
+.card {
+  border-radius: 6px;
+  display: grid;
+  height: 130px;
+  width: 130px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 0 13px 0.1px #3b3b3bda;
+}
+.card:hover {
+  box-shadow: 0 0 10px 0.6px #000000d8;
+}
+.card p {
+  overflow: hidden;
+}
+.card img {
+  border-radius: 6px;
+  grid-area: 1 / 1; /* both children share the same cell */
+  object-fit: cover;
+  z-index: 1;
+  width: 130px;
+}
+.album-info {
+  text-align: left;
+  grid-area: 1 / 1;
+  align-self: end;
+  z-index: 2;
+  padding: 5px 0 5px 5px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 80%);
+  color: rgb(255, 240, 240);
+  max-width: 130px;
+  max-height: 40px;
+  border-radius: 6px;
+  overflow-y: scroll;
+  /* hide the scrollbar  */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* hide the scrollbar  */
+.album-info::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+.artist-name {
+  line-height: 14px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.album-name {
+  line-height: 14px;
+  font-size: 0.6rem;
+}

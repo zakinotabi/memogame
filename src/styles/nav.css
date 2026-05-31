@@ -1,0 +1,65 @@
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dcdcdcce;
+  height: 100vh;
+}
+
+.diff-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+.diff-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+  margin-top: 20px;
+}
+
+.diff-btns button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 0 2px 7px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  position: relative;
+}
+
+.diff-btns button:active {
+  transform: scale(0.9);
+}
+
+.diff-btns button {
+  position: relative;
+  color: black;
+  padding-bottom: 10px;
+}
+
+.diff-btns button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.diff-btns button:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
